@@ -2,14 +2,12 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 export default function TemporaryDrawer() {
   const [state] = React.useState({
@@ -38,50 +36,82 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem key={'Home'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Home'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={'Search'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Search'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={'Explore'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Explore'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={'Messages'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Messages'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={'Notification'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Notification'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={'Create'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Create'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key={'Profile'}>
+          <ListItemButton>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Profile'} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
 
   return (
     <div>
-      <div>
+      <Grid sx={{ backgroundColor: 'red' }}>
         <Typography>helo</Typography>
-      </div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      </Grid>
+      <React.Fragment key={'left'}>
+        <Drawer
+          anchor={'left'}
+          open={state['left']}
+          variant="permanent"
+          style={{ width: 500 }}
+          onClose={toggleDrawer('left', false)}
+        >
+          {list('left')}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }
